@@ -1,0 +1,12 @@
+
+<app-add-content (newPokemonEvent)="addPokemonToList($event)" (updatePokemonEvent)="updatePokemonInList($event)"></app-add-content>
+
+<app-content-card *ngFor="let individualPokemon of (pokemonsters | contentTagged); index as i; last as isLast"
+  [pokemonster]="individualPokemon" [class.is-last]="isLast">
+</app-content-card>
+
+<!-- DON'T PASS IN ARRAYS DIRECTLY TO THE CHILD UNLESS YOU HAVE A VERY SPECIFIC REASON TO DO SO -->
+<!-- <app-content-card *ngFor="let individualPokemon of pokemonsters; index as i; last as isLast"
+  [pokemonster]="individualPokemon" [pokemonList]="pokemonsters" [class.is-last]="isLast">
+</app-content-card> -->
+<!-- <div class="type">{{ eevee.type }}</div> -->

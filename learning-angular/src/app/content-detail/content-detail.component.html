@@ -1,1 +1,19 @@
-<p>content-detail works!</p>
+<div *ngIf="individualPokemon" class="pokemon-{{individualPokemon?.id}}">
+  <div class="name">{{ individualPokemon.name }}</div>
+  <div [ngSwitch]='individualPokemon.type'>
+      <span *ngSwitchCase='"Electric"'>Uses thunder real well</span>
+      <span *ngSwitchCase='"Normal"'>What even is normal?</span>
+      <span *ngSwitchDefault>A typeless pokemon</span>
+  </div>
+  <div class="content-card-image"><img [src]="individualPokemon.imageUrl"></div>
+  <div class="trainer-name">{{ individualPokemon | defaultTrainerName : "Gary" }}</div>
+  <div *ngIf="individualPokemon.tags" class="tags">
+      <span  class="tag" *ngFor="let tag of individualPokemon.tags"> {{ tag }}</span>
+  </div>
+  <h1>Pokemon Description</h1>
+  <div class="description">{{ individualPokemon.description }}</div>
+  <!-- <span [innerHTML]="returntag()"></span> -->
+</div>
+<div *ngIf="!individualPokemon" >
+  Pokemon at that id does not exist
+</div>

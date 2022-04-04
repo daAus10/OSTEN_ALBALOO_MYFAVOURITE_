@@ -5,11 +5,14 @@
         <span *ngSwitchCase='"Normal"'>What even is normal?</span>
         <span *ngSwitchDefault>A typeless pokemon</span>
     </div>
-    <div appHighlight colour="cyan" class="description">{{ pokemonster.description }}</div>
+    <!-- <div appHighlight colour="cyan" class="description">{{ pokemonster.description }}</div> -->
     <div class="content-card-image"><img (click)="runClickFunction()" [src]="pokemonster.imageUrl"></div>
     <div class="trainer-name">{{ pokemonster | defaultTrainerName : "Gary" }}</div>
     <div *ngIf="pokemonster.tags" class="tags">
         <span appHighlight class="tag" *ngFor="let tag of pokemonster.tags"> {{ tag }}</span>
     </div>
+    <a [routerLink]="['/content', pokemonster?.id]" routerLinkActive="active">
+    Content Details
+    </a>
     <!-- <span [innerHTML]="returntag()"></span> -->
 </div>

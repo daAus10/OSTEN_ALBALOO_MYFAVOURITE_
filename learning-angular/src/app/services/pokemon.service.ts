@@ -27,4 +27,8 @@ export class PokemonService {
   updateContent(contentItem: Pokemon): Observable<any>{
     return this.http.put("api/content", contentItem,  this.httpOptions);
   }
+  getContentItem(id: number): Observable<Pokemon>{
+    console.log("Retrieving OBSERVABLE content item");
+    return this.http.get<Pokemon>("api/content/" + id);
+  }
 }

@@ -16,6 +16,8 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatInputModule } from '@angular/material/input'
 import { AppRoutingModule } from './app-routing.module';
 import { ContentListComponent } from './content-list/content-list.component';
+import { ContentDetailComponent } from './content-detail/content-detail.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { ContentListComponent } from './content-list/content-list.component';
     ContentTaggedPipe,
     HighlightDirective,
     AddContentComponent,
-    ContentListComponent
+    ContentListComponent,
+    ContentDetailComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

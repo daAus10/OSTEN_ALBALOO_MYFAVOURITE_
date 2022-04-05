@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Content } from '../helper-files/content-interface';
 import { DigimonService } from '../services/digimon.service';
+import { MessageService } from '../services/message.service';
 
 export interface DialogData {
   content: Content;
@@ -16,15 +17,15 @@ export interface DialogData {
   styleUrls: ['./modify-content-component.component.scss']
 })
 export class ModifyContentComponentComponent implements OnInit {
-  newContent: Content;
+  @Input() newContent: Content = { title: '', description: '', creator: '' };
   temptags: string = "";
   tempid: string = "";
-
+  @Input() buttonText: string = "Add New Content";
   @Output() newContentEvent: EventEmitter<Content> = new EventEmitter<Content>();
   @Output() updateContentEvent: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private digimonService: DigimonService, public dialog: MatDialog) {
-    this.newContent = { title: '', description: '', creator: '' };
+  constructor(private digimonService: DigimonService, private messageService: MessageService, public dialog: MatDialog) {
+    // this.newContent = { title: '', description: '', creator: '' };
   }
 
   ngOnInit(): void { }
@@ -37,10 +38,12 @@ export class ModifyContentComponentComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: DialogData) => {
       console.log('The dialog was closed');
-      this.newContent = result.content;
-      this.tempid = result.id;
-      this.temptags = result.tags;
-      this.modifyOrAddItemToParent();
+      if (result) {
+        this.newContent = result.content;
+        this.tempid = result.id;
+        this.temptags = result.tags;
+        this.modifyOrAddItemToParent();
+      }
     });
   }
 
@@ -54,6 +57,7 @@ export class ModifyContentComponentComponent implements OnInit {
       // this.newContent.id = parseInt(this.tempid);
       this.digimonService.updateContent(this.newContent).subscribe(() => {
         this.updateContentEvent.emit();
+        this.messageService.add("Content successfully updated, id: " + this.newContent.id + ", title: " + this.newContent.title);
         this.newContent = { title: '', description: '', creator: '', imgURL: "", type: "", tags: [] };
         this.temptags = "";
         this.tempid = "";
@@ -82,7 +86,10 @@ export class ModifyContentDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<ModifyContentDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Content,
-  ) { }
+  ) {
+    this.tempid = String(data.id) ?? "";
+    this.temptags = (data.tags ?? []).join();
+  }
 
   onNoClick(): void {
     this.dialogRef.close();

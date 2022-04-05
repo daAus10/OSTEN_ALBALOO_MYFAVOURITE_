@@ -23,8 +23,8 @@
       </mat-chip-list>
     </div>
   </mat-card-content>
-  <!-- <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
-  </mat-card-actions> -->
+  <mat-card-actions>
+    <app-modify-content-component buttonText="Update Content" [newContent]="content">
+    </app-modify-content-component>
+  </mat-card-actions>
 </mat-card>

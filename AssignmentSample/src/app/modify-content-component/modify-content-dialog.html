@@ -1,0 +1,58 @@
+<h1 mat-dialog-title>Add Digimon</h1>
+<div mat-dialog-content>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>ID</mat-label>
+      <input matInput [(ngModel)]="tempid" type="number">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input matInput [(ngModel)]="data.title">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <input matInput [(ngModel)]="data.description">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Creator</mat-label>
+      <input matInput [(ngModel)]="data.creator">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Image URL</mat-label>
+      <input matInput [(ngModel)]="data.imgURL">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Type</mat-label>
+      <input matInput [(ngModel)]="data.type">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Tags</mat-label>
+      <input matInput [(ngModel)]="temptags">
+    </mat-form-field>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="onNoClick()">Cancel</button>
+  <!-- alternative solution -->
+  <!-- <button mat-raised-button color="primary" (click)="sendDataBack()" -->
+
+  <button mat-raised-button color="primary" [mat-dialog-close]="{ content: data, tags: temptags, id: tempid }"
+    cdkFocusInitial>
+    {{(tempid !== "") ? "Update Content": "Add Content"}}
+  </button>
+</div>
+<!-- <div>
+    <span class="error-message"> {{ errorMessage }}</span>
+</div> -->

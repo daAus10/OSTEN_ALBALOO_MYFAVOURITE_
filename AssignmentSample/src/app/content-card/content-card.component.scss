@@ -2,58 +2,64 @@
 //  border: 2px solid #000;
 //}
 :host {
-  border: 1px solid #337d33;
   display: block;
   width: 400px;
   margin: 10px auto;
   text-align: center;
 
-  &.is-first {
+  & mat-card {
+    border: 1px solid #337d33;
+  }
+
+  &.is-first mat-card {
     border: 2px solid #000;
   }
-  &.rookie {
+
+  &.rookie mat-card {
     background-color: burlywood;
   }
-  &.champion {
+
+  &.champion mat-card {
     background-color: aquamarine;
   }
-  &.no-type {
+
+  &.no-type mat-card {
     background-color: peru;
   }
-  &.found {
+
+  &.found mat-card {
     border-color: #00ff00;
     border-width: 5px;
   }
-  &.individualDigimon {
+
+  &.individualDigimon mat-card {
     box-shadow: 5px 10px #55555588;
   }
-  img {
-    margin: 10px;
-    max-width: 350px;
-  }
+
+  // img {
+  //   margin: 10px;
+  //   max-width: 350px;
+  // }
+
   .meta-data {
     //height: 80px;
   }
-  .creator,
-  .type,
-  .tags {
-    margin: 8px 16px 8px 0;
-  }
+
   .author-info {
     height: 24px;
   }
-  .creator {
-  }
+
   .type {
+    margin: 8px 16px 8px 0;
   }
+
   .tags {
     color: #fff;
-    margin: 16px 0;
+    text-align: center;
   }
-  .tag {
-    padding: 8px;
-    background-color: #747bdb;
-    border-radius: 8px;
-    margin: 0 5px 0 0;
+
+  .tags .mat-chip-list-wrapper {
+    justify-content: center;
   }
+
 }

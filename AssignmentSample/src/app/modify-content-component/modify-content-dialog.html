@@ -9,31 +9,31 @@
   <div>
     <mat-form-field appearance="fill">
       <mat-label>Title</mat-label>
-      <input matInput [(ngModel)]="data.title">
+      <input matInput [(ngModel)]="dataTheDialogIsReceiving.title">
     </mat-form-field>
   </div>
   <div>
     <mat-form-field appearance="fill">
       <mat-label>Description</mat-label>
-      <input matInput [(ngModel)]="data.description">
+      <input matInput [(ngModel)]="dataTheDialogIsReceiving.description">
     </mat-form-field>
   </div>
   <div>
     <mat-form-field appearance="fill">
       <mat-label>Creator</mat-label>
-      <input matInput [(ngModel)]="data.creator">
+      <input matInput [(ngModel)]="dataTheDialogIsReceiving.creator">
     </mat-form-field>
   </div>
   <div>
     <mat-form-field appearance="fill">
       <mat-label>Image URL</mat-label>
-      <input matInput [(ngModel)]="data.imgURL">
+      <input matInput [(ngModel)]="dataTheDialogIsReceiving.imgURL">
     </mat-form-field>
   </div>
   <div>
     <mat-form-field appearance="fill">
       <mat-label>Type</mat-label>
-      <input matInput [(ngModel)]="data.type">
+      <input matInput [(ngModel)]="dataTheDialogIsReceiving.type">
     </mat-form-field>
   </div>
   <div>
@@ -48,8 +48,8 @@
   <!-- alternative solution -->
   <!-- <button mat-raised-button color="primary" (click)="sendDataBack()" -->
 
-  <button mat-raised-button color="primary" [mat-dialog-close]="{ content: data, tags: temptags, id: tempid }"
-    cdkFocusInitial>
+  <button mat-raised-button color="primary"
+    [mat-dialog-close]="{ content: dataTheDialogIsReceiving, tags: temptags, id: tempid }" cdkFocusInitial>
     {{(tempid !== "") ? "Update Content": "Add Content"}}
   </button>
 </div>

@@ -85,18 +85,20 @@ export class ModifyContentDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<ModifyContentDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Content,
+    @Inject(MAT_DIALOG_DATA) public dataTheDialogIsReceiving: Content,
   ) {
-    this.tempid = String(data.id) ?? "";
-    this.temptags = (data.tags ?? []).join();
+    this.tempid = String(dataTheDialogIsReceiving.id) ?? "";
+    this.temptags = (dataTheDialogIsReceiving.tags ?? []).join();
   }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
   sendDataBack(): void { //alternative way to send data back
+    // we could potentially process temp tags and temp id here,
+    // and update the dataTheDialogIsReceiving value
     this.dialogRef.close({
-      content: this.data,
+      content: this.dataTheDialogIsReceiving,
       tags: this.temptags,
       id: this.tempid
     });

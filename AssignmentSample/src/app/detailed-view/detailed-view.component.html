@@ -1,0 +1,31 @@
+<mat-card *ngIf="individualDigimon">
+    <mat-card-header>
+      <!-- <div mat-card-avatar class="example-header-image"></div> -->
+      <mat-card-title>{{ individualDigimon.title }}</mat-card-title>
+      <mat-card-subtitle class="creator">{{ individualDigimon?.creator }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image *ngIf="individualDigimon.imgURL" [src]="individualDigimon?.imgURL" alt="Digimon image">
+    <img mat-card-image *ngIf="!individualDigimon.imgURL"
+         src="https://i0.wp.com/www.alphr.com/wp-individualDigimon/uploads/2016/07/whos_that_pokemon.png?fit=1920%2C1080&ssl=1" alt="pokemon default image">
+    <!-- Default image -->
+    <mat-card-individualDigimon>
+      <p class="description">
+        {{ individualDigimon.description }}
+      </p>
+      <div class="meta-data">
+        <div class="author-info">
+          <span  *ngIf="individualDigimon.type" class="type">{{ individualDigimon.type }}</span>
+        </div>
+        <mat-chip-list class="tags" *ngIf="individualDigimon.tags" aria-label="Types for Digimon">
+          <mat-chip appHoverAffect color="primary" *ngFor="let tag of individualDigimon.tags">
+            {{ tag }}
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+    </mat-card-individualDigimon>
+    <mat-card-actions>
+      <app-modify-individualDigimon-component buttonText="Update individualDigimon" [newindividualDigimon]="individualDigimon">
+      </app-modify-individualDigimon-component>
+    </mat-card-actions>
+  </mat-card>
+  

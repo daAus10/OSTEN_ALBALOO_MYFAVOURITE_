@@ -19,6 +19,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DetailedViewComponent } from './detailed-view/detailed-view.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     HoverAffectDirective,
     MessagesComponent,
     ModifyContentComponentComponent,
-    ModifyContentDialogComponent
+    ModifyContentDialogComponent,
+    DetailedViewComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

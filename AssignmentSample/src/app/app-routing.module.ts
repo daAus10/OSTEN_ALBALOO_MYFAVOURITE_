@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: "content/:id",
-    component: DetailedViewComponent,
+   // component: DetailedViewComponent,
   },
   { path: "**", component: NotFoundComponent }
 ];
